@@ -1,0 +1,8 @@
+#! /bin/bash
+
+# Wifi quality percentage and  icon if ethernet is connected.
+STATE=$(grep "^\s*w" /proc/net/wireless | awk '{ print "󰤨", int($3 * 100 / 70) "%" }')
+#sed "s/down/;s/up//" /sys/class/net/e*/operstate
+SSID=$(iwgetid wlp3s0 --raw)
+
+echo "$SSID $STATE"
